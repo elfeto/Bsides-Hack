@@ -64,5 +64,3 @@ def parseLine(line, signatures, keywords):
 		print current_str, c_sig
 
 	return key_found, sig_found, None
-			
-	
