@@ -12,7 +12,7 @@ class Queries:
 		except:
 			return None
 
-	def insertSignature(self, c, sig)
+	def insertSignature(self, c, sig):
 		query = """insert into signature (Signature, String) values ('%s', '%s')""" % (sig, buildHash(sig))
 		try:
 			c.execute(query)
