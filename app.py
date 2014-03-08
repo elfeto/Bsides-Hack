@@ -1,8 +1,13 @@
 from flask import Flask, request, render_template
 from tools import *
 #from dbq import *
+import time
+from werkzeug.utils import secure_filename
+import os
 
+UPLOAD_FOLDER = 'uploads'
 app = Flask(__name__) #initializing app
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 ##### Landing Page #####
 @app.route("/")
@@ -14,7 +19,7 @@ def Landing():
 @app.route("/uplog")
 def UploadLog():
 
-	return "Upload Log Form"
+	return render_template('uploadlog.html')
 
 ##### Upload Signature Page #####
 @app.route("/upsig")
@@ -23,14 +28,37 @@ def UploadSig():
 	return render_template("uploadsig.html")
 
 ##### Analyze Page #####
-@app.route("/analyze")
+@app.route("/analyze", methods=['POST'])
 def Analyze():
+	#Get form file
+	file = request.files['log-file']
+	#Create secure filename
+	filename = "log-" + str(time.time())
+	#Save the file
+	file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-	chart = GraphTime([('192.168.1.1', 23), ('192.168.2.1', 645)])
+	try:
 
-	#return chart
+		#Connect to mysql db
+		db= MySQLdb.connect(host="localhost",user="bsides", passwd="lamadredelquemerompaestepassword",db="Bsides")
+		#Returns results in dictionary form
+		c = db.cursor(MySQLdb.cursors.DictCursor)
+		#Constructor Queries()
+		quer = Queries()
+		#Parse Log file uploaded
+		var = fileParser(os.path.join(app.config['UPLOAD_FOLDER'], filename), quer.getSignatures(c), quer.getKeywords(c))
 
-	return render_template("analyze.html", chart = str(chart))
+		#Create ip time acess chart
+		ipChart = GraphIp(var)
+		#Create time acess chart
+		timeChart = GraphTime(var)
+
+	except:
+
+		pass
+
+	return render_template("analyze.html", ipChart = ipChart, timeChart = timeChart)
+	
 
 ##### Store Signature Page #####
 """@app.route("/signature", methods=['POST'])
