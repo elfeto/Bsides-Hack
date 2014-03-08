@@ -29,16 +29,10 @@ def Analyze():
 	return "Analyze Log and Display output"
 
 ##### Store Signature Page #####
-@app.route("/")
+@app.route("/signature")
 def Signature():
 
 	return "Do something with signature"
-
-##### Upload Log Page #####
-@app.route("/upload")
-def UploadLog():
-
-	return "Upload Form"
 
 
 if __name__ == "__main__":
