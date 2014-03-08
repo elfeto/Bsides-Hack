@@ -10,8 +10,6 @@ import os.path
 import string
 import hashlib
 
-keywords = ["sex", "xxx", "porn", "anal"]
-
 def buildHash(array):
 	md5 = hashlib.md5()
 	md5.update(array)
@@ -19,31 +17,27 @@ def buildHash(array):
 	return csig
 	
 
-def fileParser(path):
+def fileParser(path, signatures, keywords):
 	import hashlib
 	logfile = open(path, 'r')
 	for lines in logfile:
-		logger = []
-		hashing(lines, logger)
+		split_line = hashing(lines)
+		keys, sigs, error = parseLine(split_line, signatures,keywords)
 		#print logger
 
-def splitLine(lines, logger):
+def splitLine(lines):
 	lines = lines.split(' ')
 
 	dic = {}
 	dic['ip'] = lines[0]
-	logger.append(dic['ip']) #ip
 	date = lines[3]
 	dic['date'] = date[1:-1]
-	logger.append(dic['date']) #fecha
 	dic['type'] = lines[5]
-	logger.append(dic['type']) #type
 	dic['string'] = lines[6]
-	logger.append(dic['string']) #string
 	dic['proto'] = lines[7]
-	logger.append(dic['proto']) #protocolo
 	dic['id'] = lines[8]
-	logger.append(dic['id']) #access-id
+	
+	return dic
 
 def parseLine(line, signatures, keywords):
 	
@@ -69,6 +63,6 @@ def parseLine(line, signatures, keywords):
 			sig_found.append((c_sig, current_str))	
 		print current_str, c_sig
 
-	return key_found, sig_found
+	return key_found, sig_found, None
 			
 	
