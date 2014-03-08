@@ -1,4 +1,4 @@
-@import url("http://yui.yahooapis.com/pure/0.4.2/pure-min.css");
+@import url("http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css");
 
 .banner{
 
@@ -8,16 +8,32 @@
 
 }
 
+.brand{
+
+	margin-bottom: 6%;
+
+}
+
 .menu-button{
 
 	background-color: #dd514c;
 
 	margin-top: 10%;
 
+	color:#333;
+
+}
+
+.menu-button:hover{
+
+	background-color:#b92823; 
+
 }
 
 .landing{
 
-	background-color: #dd514c;
+	color: #b92823;
+
+	margin-top: 5%;
 
 }

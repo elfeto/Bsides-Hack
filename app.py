@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 from tools import *
-from dbq import *
+#from dbq import *
 
 app = Flask(__name__) #initializing app
 
@@ -33,7 +33,7 @@ def Analyze():
 	return render_template("analyze.html", chart = str(chart))
 
 ##### Store Signature Page #####
-@app.route("/signature", methods=['POST'])
+"""@app.route("/signature", methods=['POST'])
 def Signature():
 
 	signature = request.form['signature']
@@ -46,7 +46,11 @@ def Signature():
 	
 		c = db.cursor(MySQLdb.cursors.DictCursor)
 
-		status = insertSignature(c, signature);
+		quer = Queries()
+
+		status = quer.insertSignature(c, signature);
+
+		db.commit()
 
 		c.close()
 
@@ -54,9 +58,11 @@ def Signature():
 
 		pass
 
-	return render_template("signature.html", status = status)
+	return render_template("signature.html", status = status)"""
 
 
 if __name__ == "__main__":
     
-    app.run()
+	app.run()
+
+    #app.run(host='136.145.181.51', port=80)
