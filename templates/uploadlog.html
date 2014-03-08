@@ -1,0 +1,20 @@
+<!doctype html>
+
+<link rel='stylesheet' href="{{url_for('static', filename='style.css')}}"/>
+
+
+		<h1>Web IDS</h1>
+
+
+
+		<a class="pure-button menu-button" href="#">Analyze</a>
+
+		<a class="pure-button menu-button" href="#">Signature</a>
+
+Upload a log file: 
+<form id="uploadfile" method = "POST" action = "/analyze" enctype="multipart/form-data">
+
+<input name = "log-file" type ="file"/>
+<input type = "submit" value="Upload" id = "submit"/>
+
+</form>
