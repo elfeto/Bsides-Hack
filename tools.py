@@ -89,7 +89,7 @@ def fileParser(path):
 	logfile = open(path, 'r')
 	for lines in logfile:
 		logger = []
-		hashing(lines, logger)
+		splitLine(lines, logger)
 		#print logger
 
 def splitLine(lines, logger):
