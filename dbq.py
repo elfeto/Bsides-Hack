@@ -28,7 +28,7 @@ class Queries:
 			c.execute(query)
 			results = c.fetchall()
 			for r in results:
-				keys.append(r["keyword"])	
+				keys.append(r["Keyword"])	
 			return keys
 		except:
 			return None
