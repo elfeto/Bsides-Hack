@@ -45,8 +45,8 @@ class Queries:
 		except:
 			return None
 	
-	def searchSignature(self, md5):
-		query = """select Signature from signature where Signature == %s""" % md5
+	def searchSignature(self, c, md5):
+		query = """select Signature from signature where Signature = '%s'""" % md5
 		try:
 			c.execute(query)
 			if c.fetchone():
@@ -55,9 +55,9 @@ class Queries:
 		except:
 			return None
 
-	def searchKey(self, key):
+	def searchKey(self, c, key):
 		try:
-			query = """select Keyword from keyword where Keyword == %s""" % key		
+			query = """select Keyword from keyword where Keyword = '%s'""" % key		
 			c.execute(query)		
 			if c.fetchone():
 				return True

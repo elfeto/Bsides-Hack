@@ -19,6 +19,32 @@ def buildHash(array):
 	return csig
 	
 
+def fileParser(path):
+	import hashlib
+	logfile = open(path, 'r')
+	for lines in logfile:
+		logger = []
+		hashing(lines, logger)
+		#print logger
+
+def splitLine(lines, logger):
+	lines = lines.split(' ')
+
+	dic = {}
+	dic['ip'] = lines[0]
+	logger.append(dic['ip']) #ip
+	date = lines[3]
+	dic['date'] = date[1:-1]
+	logger.append(dic['date']) #fecha
+	dic['type'] = lines[5]
+	logger.append(dic['type']) #type
+	dic['string'] = lines[6]
+	logger.append(dic['string']) #string
+	dic['proto'] = lines[7]
+	logger.append(dic['proto']) #protocolo
+	dic['id'] = lines[8]
+	logger.append(dic['id']) #access-id
+
 def parseLine(line, signatures, keywords):
 	
 	key_found = []	
