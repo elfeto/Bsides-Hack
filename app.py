@@ -27,6 +27,13 @@ def UploadSig():
 
 	return render_template("uploadsig.html")
 
+
+##### Upload Signature Page #####
+@app.route("/upkey")
+def UploadKey():
+
+	return render_template("uploadkey.html")
+
 ##### Analyze Page #####
 @app.route("/analyze", methods=['POST'])
 def Analyze():
@@ -88,6 +95,34 @@ def Signature():
 
 	return render_template("signature.html", status = status)"""
 
+
+##### Store Key Page #####
+"""@app.route("/key", methods=['POST'])
+def Key():
+
+	key = request.form['key']
+
+	status = None
+
+	try:
+
+		db= MySQLdb.connect(host="localhost",user="bsides", passwd="lamadredelquemerompaestepassword",db="Bsides")
+	
+		c = db.cursor(MySQLdb.cursors.DictCursor)
+
+		quer = Queries()
+
+		status = quer.insertKey(c, key);
+
+		db.commit()
+
+		c.close()
+
+	except:
+
+		pass
+
+	return render_template("key.html", status = status)"""
 
 if __name__ == "__main__":
     

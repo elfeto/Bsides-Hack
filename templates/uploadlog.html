@@ -2,19 +2,56 @@
 
 <link rel='stylesheet' href="{{url_for('static', filename='style.css')}}"/>
 
+<div class='container-fluid'>
 
-		<h1>Web IDS</h1>
+	<div class='row banner'>
 
+		<div class='col-md-3 col-md-offset-1'>
 
+			<h1 class='brand'><a href='/'>Teca WebIDS</a></h1>
 
-		<a class="pure-button menu-button" href="#">Analyze</a>
+		</div>
 
-		<a class="pure-button menu-button" href="#">Signature</a>
+		<div class='col-md-3 col-md-offset-5'>
 
-Upload a log file: 
-<form id="uploadfile" method = "POST" action = "/analyze" enctype="multipart/form-data">
+			<div class='btn-group menu'>
 
-<input name = "log-file" type ="file"/>
-<input type = "submit" value="Upload" id = "submit"/>
+				<a class="btn btn-lg menu-button" href="/uplog">Analyze</a>
 
-</form>
+				<a class="btn btn-lg menu-button" href="/upsig">Signature</a>
+
+				<a class="btn btn-lg menu-button" href="/upkey">Keys</a>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class='container landing'>
+
+	<div class='jumbotron'>
+
+		<h1>Upload Log File to Teca IDS</h1>
+
+		<br><br>
+ 
+		<form method = "POST" action = "/analyze" enctype="multipart/form-data">
+
+			<div class='input-group input-group-lg'>
+
+				<span class='input-group-addon'><i class='glyphicon glyphicon-file'></i></span>
+
+				<input class='form-control' name = "log-file" type ="file"/>
+
+			</div>
+
+			<button class='btn btn-lg menu-button'>Upload Log</button>
+
+		</form>
+
+	</div>
+
+</div>
