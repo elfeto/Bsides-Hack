@@ -38,21 +38,25 @@ def Analyze():
 
 	try:
 
+		#Connect to mysql db
 		db= MySQLdb.connect(host="localhost",user="bsides", passwd="lamadredelquemerompaestepassword",db="Bsides")
-
+		#Returns results in dictionary form
 		c = db.cursor(MySQLdb.cursors.DictCursor)
-
+		#Constructor Queries()
 		quer = Queries()
-
+		#Parse Log file uploaded
 		var = fileParser(os.path.join(app.config['UPLOAD_FOLDER'], filename), quer.getSignatures(c), quer.getKeywords(c))
 
-		chart = GraphTime(var)
+		#Create ip time acess chart
+		ipChart = GraphIp(var)
+		#Create time acess chart
+		timeChart = GraphTime(var)
 
 	except:
 
 		pass
 
-	return render_template("analyze.html", chart = chart)
+	return render_template("analyze.html", ipChart = ipChart, timeChart = timeChart)
 	
 
 ##### Store Signature Page #####
