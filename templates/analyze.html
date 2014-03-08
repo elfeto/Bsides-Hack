@@ -4,6 +4,12 @@
 
 <script type='text/javascript' src='http://google.com/jsapi'></script>
 
+<script>
+{% autoescape false%}
+{{chart}}
+{%endautoescape%}
+</script>
+
 <div class='pure-g banner'>
 
 	<div class='pure-u-2-24 space'></div>
@@ -26,12 +32,6 @@
 
 </div>
 
-<div class='pure-g'>
-
-	<div class='pure-u-2-24 space'></div>
-
-	<div class='pure-u-20 chart' id='chart_div'>
-
-	</div>
+<div id='chart_div'>
 
 </div>

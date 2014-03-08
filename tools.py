@@ -7,48 +7,33 @@
 
 
 def GraphIp(tupleList):
-	print ''' 
-		<script type="text/javascript">
-
-	      // Load the Visualization API and the piechart package.
+	
+	chart =""" 
 	      google.load('visualization', '1.0', {'packages':['corechart']});
-
-	      // Set a callback to run when the Google Visualization API is loaded.
 	      google.setOnLoadCallback(drawChart);
-
-	      // Callback that creates and populates a data table,
-	      // instantiates the pie chart, passes in the data and
-	      // draws it.
 	      function drawChart() {
-
-	        // Create the data table.
 	        var data = new google.visualization.DataTable();
 	        data.addColumn('string', 'ipaddress');
 	        data.addColumn('number', 'access');
-		        data.addRows([ '''
+		        data.addRows([ """
 
 	if len(tupleList) != 0: 
 		for ip,access in tupleList:
-			print "['%s', %s]," % (ip,access)
-	        print "]);"
+			chart += "['%s', %s]," % (ip,access)
+	        chart += "]);"
 
-	print '''
-
-	        // Set chart options
-	        var options = {'title':'IP address | access',
+	chart +="""var options = {'title':'IP address | access',
 	                       'width':400,
 	                       'height':300};
-
-	        // Instantiate and draw our chart, passing in some options.
 	        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
 	        chart.draw(data, options);
-	      }
+	      }"""
 
-	    </script>'''
+	return chart
 
 def GraphTime(tupleList):
-	print ''' 
-		<script type="text/javascript">
+	
+	chart = """ 
 
 	      // Load the Visualization API and the piechart package.
 	      google.load('visualization', '1.0', {'packages':['corechart']});
@@ -65,14 +50,14 @@ def GraphTime(tupleList):
 	        var data = new google.visualization.DataTable();
 	        data.addColumn('string', 'time');
 	        data.addColumn('number', 'access');
-		        data.addRows([ '''
+		        data.addRows([ """
 
 	if len(tupleList) != 0: 
 		for time,access in tupleList:
-			print "['%s', %s]," % (time,access)
-	        print "]);"
+			chart += "['%s', %s]," % (time,access)
+	        chart += "]);"
 
-	print '''
+	chart += """
 
 	        // Set chart options
 	        var options = {'title':'Time | access',
@@ -82,6 +67,6 @@ def GraphTime(tupleList):
 	        // Instantiate and draw our chart, passing in some options.
 	        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 	        chart.draw(data, options);
-	      }
+	      }"""
 
-	    </script>'''
+	return chart

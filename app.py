@@ -22,10 +22,14 @@ def UploadSig():
 	return "Upload Signature Form"
 
 ##### Analyze Page #####
-@app.route("/analize")
+@app.route("/analyze")
 def Analyze():
 
-	return "Analyze Log and Display output"
+	chart = GraphTime([('192.168.1.1', 23), ('192.168.2.1', 645)])
+
+	#return chart
+
+	return render_template("analyze.html", chart = str(chart))
 
 ##### Store Signature Page #####
 @app.route("/signature")
