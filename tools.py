@@ -20,9 +20,17 @@ def buildHash(array):
 def fileParser(path, signatures, keywords):
 	import hashlib
 	logfile = open(path, 'r')
+	ipC = {}
 	for lines in logfile:
-		split_line = hashing(lines)
+		split_line = splitLine(lines)
 		keys, sigs, error = parseLine(split_line, signatures,keywords)
+	
+		# IP counter for ip graph.
+		if not ipC.has_key(split_line["ip"]):
+			ipC[split_line["ip"]] +=1 
+		else:
+			ipC[split_line["ip"]] = 1	
+				
 		#print logger
 
 def splitLine(lines):
