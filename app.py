@@ -8,6 +8,7 @@ import os
 UPLOAD_FOLDER = 'uploads'
 app = Flask(__name__) #initializing app
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.debug = True
 
 ##### Landing Page #####
 @app.route("/")
@@ -53,22 +54,22 @@ def Analyze():
 		#Constructor Queries()
 		quer = Queries()
 		#Parse Log file uploaded
-		var = fileParser(os.path.join(app.config['UPLOAD_FOLDER'], filename), quer.getSignatures(c), quer.getKeywords(c))
+		var1, var2, var3 = fileParser(os.path.join(app.config['UPLOAD_FOLDER'], filename), quer.getSignatures(c), quer.getKeywords(c))
 
 		#Create ip time acess chart
-		ipChart = GraphIp(var)
+		ipChart = GraphIp(var2)
 		#Create time acess chart
-		timeChart = GraphTime(var)
+		timeChart = GraphTime(var1)
 
 	except:
 
 		pass
 
-	return render_template("analyze.html", ipChart = ipChart, timeChart = timeChart)
+	return render_template("analyze.html", ip = ipChart, time = timeChart, reports =reports)
 	
 
 ##### Store Signature Page #####
-"""@app.route("/signature", methods=['POST'])
+@app.route("/signature", methods=['POST'])
 def Signature():
 
 	signature = request.form['signature']
@@ -93,11 +94,11 @@ def Signature():
 
 		pass
 
-	return render_template("signature.html", status = status)"""
+	return render_template("signature.html", status = status)
 
 
 ##### Store Key Page #####
-"""@app.route("/key", methods=['POST'])
+@app.route("/key", methods=['POST'])
 def Key():
 
 	key = request.form['key']
@@ -122,10 +123,10 @@ def Key():
 
 		pass
 
-	return render_template("key.html", status = status)"""
+	return render_template("key.html", status = status)
 
 if __name__ == "__main__":
     
-	app.run()
+	#app.run()
 
-    #app.run(host='136.145.181.51', port=80)
+    app.run(host='136.145.181.51', port=80)

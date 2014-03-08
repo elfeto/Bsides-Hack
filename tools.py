@@ -29,7 +29,7 @@ def GraphIp(tupleList):
 	chart +="""var options = {'title':'IP address | access',
 	                       'width':400,
 	                       'height':300};
-	        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+	        var chart = new google.visualization.BarChart(document.getElementById('ipchart_div'));
 	        chart.draw(data, options);
 	      }"""
 
@@ -69,7 +69,7 @@ def GraphTime(tupleList):
 	                       'height':300};
 
 	        // Instantiate and draw our chart, passing in some options.
-	        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+	        var chart = new google.visualization.LineChart(document.getElementById('datechart_div'));
 	        chart.draw(data, options);
 	      }"""
 

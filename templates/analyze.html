@@ -6,7 +6,8 @@
 
 <script>
 {% autoescape false%}
-{{chart}}
+{{ipChart}}
+{{timeChart}}
 {%endautoescape%}
 </script>
 
@@ -17,6 +18,12 @@
 
 <a class="pure-button menu-button" href="#">Signature</a>
 
-<div id='chart_div'>
+<div id='ipchart_div'>
 
 </div>
+
+<div id='datechart_div'>
+
+</div>
+
+{{reports}}
