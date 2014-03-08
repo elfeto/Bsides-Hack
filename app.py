@@ -19,7 +19,7 @@ def UploadLog():
 @app.route("/upsig")
 def UploadSig():
 
-	return "Upload Signature Form"
+	return render_template("uploadsig.html")
 
 ##### Analyze Page #####
 @app.route("/analyze")
@@ -32,10 +32,12 @@ def Analyze():
 	return render_template("analyze.html", chart = str(chart))
 
 ##### Store Signature Page #####
-@app.route("/signature")
+@app.route("/signature", methods=['POST'])
 def Signature():
 
-	return "Do something with signature"
+	signature = request.form['signature']
+
+	return render_template("signature.html")
 
 
 if __name__ == "__main__":

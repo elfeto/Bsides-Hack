@@ -4,19 +4,16 @@
 
 <script type='text/javascript' src='http://google.com/jsapi'></script>
 
-<script>
-{% autoescape false%}
-{{chart}}
-{%endautoescape%}
-</script>
-
 <h1>Web IDS</h1>
-
 
 <a class="pure-button menu-button" href="#">Analyze</a>
 
 <a class="pure-button menu-button" href="#">Signature</a>
 
-<div id='chart_div'>
+<form method="post" action="/signature">
 
-</div>
+	<input type='text' name='signature' value=''/>
+
+	<button>Add Signature</button>
+
+</form>
