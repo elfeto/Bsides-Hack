@@ -14,6 +14,20 @@
 
 }
 
+.brand a{
+
+	color: #dd514c;
+
+	text-decoration: none;
+
+}
+
+.brand a:hover{
+
+	color: #b92823;
+
+}
+
 .menu-button{
 
 	background-color: #dd514c;

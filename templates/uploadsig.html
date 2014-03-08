@@ -2,18 +2,55 @@
 
 <link rel='stylesheet' href="{{url_for('static', filename='style.css')}}"/>
 
-<script type='text/javascript' src='http://google.com/jsapi'></script>
+<div class='container-fluid'>
 
-<h1>Web IDS</h1>
+	<div class='row banner'>
 
-<a class="pure-button menu-button" href="#">Analyze</a>
+		<div class='col-md-3 col-md-offset-1'>
 
-<a class="pure-button menu-button" href="#">Signature</a>
+			<h1 class='brand'><a href='/'>Teca WebIDS</a></h1>
 
-<form method="post" action="/signature">
+		</div>
 
-	<input type='text' name='signature' value=''/>
+		<div class='col-md-3 col-md-offset-5'>
 
-	<button>Add Signature</button>
+			<div class='btn-group menu'>
 
-</form>
+				<a class="btn btn-lg menu-button" href="/uplog">Analyze</a>
+
+				<a class="btn btn-lg menu-button" href="/upsig">Signature</a>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class='container landing'>
+
+	<div class='jumbotron'>
+
+		<h1>Add Signature to Teca IDS</h1>
+
+		<br><br>
+
+		<form method="post" action="/signature">
+
+			<div class='input-group input-group-lg'>
+
+				<span class='input-group-addon'><i class='glyphicon glyphicon-tag'></i></span>
+
+				<input type='text' class='form-control' name='signature' value='' placeholder='Insert Signature Value'/>
+
+			</div>
+
+			<button class='btn btn-lg menu-button'>Add Signature</button>
+
+		</form>
+
+	</div>
+
+</div>
+
