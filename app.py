@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from tools import *
 
 app = Flask(__name__) #initializing app
@@ -7,8 +7,7 @@ app = Flask(__name__) #initializing app
 @app.route("/")
 def Landing():
     
-    return "Landing Page"
-
+    return render_template('landing.html', name="")
 
 ##### Upload Log Page #####
 @app.route("/uplog")
@@ -18,7 +17,7 @@ def UploadLog():
 
 ##### Upload Signature Page #####
 @app.route("/upsig")
-def UploadLog():
+def UploadSig():
 
 	return "Upload Signature Form"
 
