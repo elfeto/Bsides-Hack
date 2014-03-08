@@ -2,35 +2,13 @@
 
 <link rel='stylesheet' href="{{url_for('static', filename='style.css')}}"/>
 
-<script type='text/javascript' src='http://google.com/jsapi'></script>
-
-<script>
-{% autoescape false%}
-{{chart}}
-{%endautoescape%}
-</script>
-
-<div class='pure-g banner'>
-
-	<div class='pure-u-2-24 space'></div>
-
-	<div class='pure-u-6-24'>
 
 		<h1>Web IDS</h1>
 
-	</div>
 
-	<div class='pure-u-11-24 space'></div>
+	{{chart}}
 
-	<div class='pure-u-4-24'>
-
-		<a class="pure-button menu-button" href="#">Analyze</a>
-
-		<a class="pure-button menu-button" href="#">Signature</a>
-
-	</div>
-
-</div>
+	
 
 <div id='chart_div'>
 
