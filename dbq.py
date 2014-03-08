@@ -1,6 +1,25 @@
 import MySQLdb
+from tools import *
 
 class Queries:
+
+	
+	def insertKeyword(self, c, key):
+		query = """insert into keyword (Keyword) values ('%s')""" % key
+		try:
+			c.execute(query)
+			return c.lastrowid
+		except:
+			return None
+
+	def insertSignature(self, c, sig)
+		query = """insert into signature (Signature, String) values ('%s', '%s')""" % (sig, buildHash(sig))
+		try:
+			c.execute(query)
+			return c.lastrowid
+		except:
+			return None
+			
 
 	def getKeywords(self, c):
 		keys = []
