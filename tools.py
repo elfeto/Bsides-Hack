@@ -108,7 +108,7 @@ def splitLine(lines):
 	date = lines[3]
 	dic['date'] = date[1:-1]
 	dic['type'] = lines[5]
-	dic['string'] = lines[6]
+	dic['url'] = lines[6]
 	dic['proto'] = lines[7]
 	dic['id'] = lines[8]
 	
