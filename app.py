@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 from tools import *
+from dbq import *
 
 app = Flask(__name__) #initializing app
 
@@ -37,7 +38,23 @@ def Signature():
 
 	signature = request.form['signature']
 
-	return render_template("signature.html")
+	status = None
+
+	try:
+
+		db= MySQLdb.connect(host="localhost",user="bsides", passwd="lamadredelquemerompaestepassword",db="Bsides")
+	
+		c = db.cursor(MySQLdb.cursors.DictCursor)
+
+		status = insertSignature(c, signature);
+
+		c.close()
+
+	except:
+
+		pass
+
+	return render_template("signature.html", status = status)
 
 
 if __name__ == "__main__":
